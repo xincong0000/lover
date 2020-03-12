@@ -2,8 +2,8 @@
 
 namespace app\index\controller;
 
-use app\common\controller\Index as Cindex;
-class Index extends Cindex
+//use app\common\controller\Index as Cindex;
+class Login extends Cindex
 {
     /**
      * default login (I don't need users,just for you)
@@ -11,5 +11,10 @@ class Index extends Cindex
     public function index()
     {
         return $this->fetch();
+    }
+
+    public function checkLogin()
+    {
+
     }
 }

@@ -40,5 +40,17 @@ layui.use(['layer', 'element'], function () {
             }
         });
     })
+    var html1 = "<div style=\"padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;\">\n" +
+        "        <h2>Dear! You know what?</h2><br>\n" +
+        "        &nbsp;&nbsp;If you don't appear suddenly. I could have used to be alone<br>\n" +
+        "        &nbsp;&nbsp;Hope and hopelessness do not matter. All deep love is self fulfillment<br>\n" +
+        "        &nbsp;&nbsp;Account number is your name<br>\n" +
+        "        &nbsp;&nbsp;The password is your birthday\n" +
+        "    </div>";
+    var html2 = "<div style=\"padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;\">\n" +
+        "        <h2>Dear! Is it really you?</h2><br>\n" +
+        "        The password is your birthday, the month and the day\n" +
+        "    </div>";
+
 
 })
