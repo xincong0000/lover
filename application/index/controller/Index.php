@@ -10,6 +10,14 @@ class Index extends Cindex
      */
     public function index()
     {
-        $this->fetch();
+//        $this->fetch();
+        $a = 6;
+        if($a>3){
+            echo 1;
+        }elseif ($a>5){
+            echo 2;
+        }else{
+            echo 3;
+        }
     }
 }
