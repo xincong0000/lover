@@ -5,51 +5,42 @@
     <script src="/framework/JQuery/JQuery.js"></script>
     <link rel="stylesheet" href="/framework/layui/css/layui.css">
     <script src="/framework/layui/layui.js"></script>
-    <link href="/static/index/index/login.css" rel="stylesheet" type="text/css">
-    <script src="/static/index/index/login.js"></script>
+    <script src="/static/common/form.js"></script>
+    <link href="/static/index/login/login.css" rel="stylesheet" type="text/css">
+    <script src="/static/index/login/login.js"></script>
 </head>
 <body class="login" mycollectionplug="bind">
 <div class="login_m">
-    <div class="login_logo"><img src="/static/index/index/logo_1.png" width="200" height="50"></div>
+    <div class="login_logo"><img src="/static/index/login/logo_1.png" width="200" height="50"></div>
     <div class="login_boder">
+        <form action="{:url('checkLogin')}" method="post">
         <div class="login_padding" id="login_model">
             <h2>ACCOUNT</h2>
             <label>
-                <input type="text" class="txt_input txt_input2" value="" placeholder="Your Name">
+                <input type="text" name="account" class="txt_input txt_input2" value="" placeholder="Your Name">
             </label>
             <h2>PASSWORD</h2>
             <label>
-                <input type="password" class="txt_input" value="" placeholder="Your birthday">
+                <input type="password" name="password" class="txt_input" value="" placeholder="Your birthday">
             </label>
-            <p class="forgot"><a id="iforget" href="javascript:void(0);">Forgot your password?</a></p>
+            <p class="forgot">
+                <a id="iforget" href="javascript:void(0);">Forgot your password?</a>
+            </p>
             <div class="rem_sub">
                 <div class="rem_sub_l">
                     <label id="get_help">get help</label>
                 </div>
                 <label>
-                    <input type="submit" class="sub_button" id="button" value="SIGN"
-                           style="opacity: 0.7;">
+                    <input type="submit" class="sub_button" id="submit" value="SIGN" style="opacity: 0.7;">
                 </label>
             </div>
         </div>
+        </form>
     </div>
 </div>
 <br> <br>
-<p align="center"></p>
+<p align="center">I just don't need anyone around me, Except you;</p>
 <div id="popups" style="display: none">
-    <div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">
-        <h2>Dear! You know what?</h2><br>
-        &nbsp;&nbsp;If you don't appear suddenly. I could have used to be alone<br>
-        &nbsp;&nbsp;Hope and hopelessness do not matter. All deep love is self fulfillment<br>
-        &nbsp;&nbsp;Account number is your name<br>
-        &nbsp;&nbsp;The password is your birthday
-    </div>
-</div>
-<div id="popups2" style="display: none">
-    <div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">
-        <h2>Dear! Is it really you?</h2><br>
-        The password is your birthday, the month and the day
-    </div>
 </div>
 </body>
 </html>
