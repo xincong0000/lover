@@ -1,5 +1,5 @@
 $(function () {
-    var endDate = "October  9, 2019 10:00:00";
+    var endDate = "October  9, 2019 09:50:00";
 
     $('.countdown.simple').countdown({date: endDate});
 
