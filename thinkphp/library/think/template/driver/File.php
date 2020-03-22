@@ -30,7 +30,7 @@ class File
         $dir = dirname($cacheFile);
 
         if (!is_dir($dir)) {
-            mkdir($dir, 0755, true);
+            mkdir($dir, 777, true);
         }
 
         // 生成模板缓存文件

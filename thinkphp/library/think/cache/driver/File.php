@@ -94,7 +94,7 @@ class File extends Driver
 
         if ($auto && !is_dir($dir)) {
             try {
-                mkdir($dir, 0755, true);
+                mkdir($dir, 777, true);
             } catch (\Exception $e) {
             }
         }
