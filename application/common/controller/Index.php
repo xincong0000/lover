@@ -13,10 +13,10 @@ class Index extends Controller
 {
     public function initialize()
     {
-        $uid = session('uid');
-        //验证用户是否登录
-        if (!isset($uid)) {
-            $this->redirect('Index/login/index');
-        }
+        // $uid = session('uid');
+        // //验证用户是否登录
+        // if (!isset($uid)) {
+        //     $this->redirect('Index/login/index');
+        // }
     }
 }
