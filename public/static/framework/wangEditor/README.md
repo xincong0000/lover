@@ -57,7 +57,7 @@ editor.create()
 - 去[知乎](https://www.zhihu.com/)提问，并邀请[作者](https://www.zhihu.com/people/wang-fu-peng-54/activities)来回答
 - 去[segmentfault](https://segmentfault.com)提问，并邀请[作者](https://segmentfault.com/u/wangfupeng1988)来回答
 
-每次升级版本修复的问题记录在[这里](./ISSUE.md)
+每次升级版本修复的问题记录在[这里](ISSUE.md)
 
 ## 关于作者
 

@@ -4,10 +4,10 @@
 
 import $ from '../util/dom-core.js'
 import _config from '../config.js'
-import Menus from '../menus/index.js'
-import Text from '../text/index.js'
-import Command from '../command/index.js'
-import selectionAPI from '../selection/index.js'
+import Menus from '../menus'
+import Text from '../text'
+import Command from '../command'
+import selectionAPI from '../selection'
 import UploadImg from './upload/upload-img.js'
 import { arrForEach, objForEach } from '../util/util.js'
 import { getRandom } from '../util/util.js'
@@ -152,11 +152,11 @@ Editor.prototype = {
         if(config.onfocus || config.onblur){
             // 当前编辑器是否是焦点状态
             this.isFocus = false
-            
+
             $(document).on('click', (e) => {
                 //判断当前点击元素是否在编辑器内
                 const isChild = $textElem.isContain($(e.target))
-                
+
                 //判断当前点击元素是否为工具栏
                 const isToolbar = $toolbarElem.isContain($(e.target))
                 const isMenu = $toolbarElem[0] == e.target ? true : false
@@ -278,7 +278,7 @@ Editor.prototype = {
                     onchange(currentHtml)
                     beforeChangeHtml = currentHtml
                 }, onchangeTimeout)
-            }   
+            }
         }
 
         // -------- 绑定 onblur 事件 --------
@@ -297,7 +297,7 @@ Editor.prototype = {
                 onfocus()
             }
         }
-        
+
     },
 
     // 创建编辑器
