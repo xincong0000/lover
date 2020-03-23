@@ -12,7 +12,7 @@
     "wangEditor",
     "web 富文本编辑器"
   ],
-  "main": "release/wangEditor.js",
+  "main": "",
   "maintainers": [
     {
       "name": "wangfupeng1988",
