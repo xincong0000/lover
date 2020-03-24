@@ -166,5 +166,13 @@ a.arrow-link:hover {
     margin-top: 34%;
     display: block;
 }
+.explain {
+    text-align: center;
+    width: 80%;
+}
+.explain p {
+    color: #fff9ec;
+    font-size: 14px;
+}
 
 

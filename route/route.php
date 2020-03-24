@@ -16,5 +16,5 @@ Route::get('think', function () {
 Route::get('hello/:name', 'index/hello');
 
 return [
-
+    '__miss__' => ['index/index/index', ['method'=> 'get']],
 ];
