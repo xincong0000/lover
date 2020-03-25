@@ -1,0 +1,52 @@
+<!-- 头部区域（可配合layui已有的水平导航） -->
+<div class="layui-header">
+    <div class="layui-logo">Sleeping--Elf</div>
+    <ul class="layui-nav layui-layout-left">
+        <li class="layui-nav-item"><a href="javascript:;">控制台</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">文章</a></li>
+        <li class="layui-nav-item"><a href="javascript:;">用户</a></li>
+        <li class="layui-nav-item">
+            <a href="javascript:;">其它</a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:;" id="ClearCache">清除缓存</a></dd>
+                <dd><a href="javascript:;">消息管理</a></dd>
+                <dd><a href="javascript:;">授权管理</a></dd>
+            </dl>
+        </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+            <a href="javascript:;">
+                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                SleepingElf
+            </a>
+            <dl class="layui-nav-child">
+                <dd><a href="javascript:;">基本资料</a></dd>
+                <dd><a href="javascript:;">安全设置</a></dd>
+            </dl>
+        </li>
+        <li class="layui-nav-item"><a href="javascript:;">退出</a></li>
+    </ul>
+</div>
+<script>
+    layui.use(['layer', 'element'], function () {
+        $(function () {
+            //清除缓存
+            $("#ClearCache").click(function () {
+                // $.ajax({
+                //     url: 'mint/index/clearCache',
+                //     method: 'post',
+                //     data: {},
+                //     dataType: 'json',
+                //     success: function (res) {
+                //         console.log(res);
+                //         layer.msg(res.msg);
+                //         setTimeout(function () {
+                //             window.location.reload();
+                //         }, 1500);
+                //     }
+                // })
+            })
+        })
+    })
+</script>

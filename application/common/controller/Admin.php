@@ -9,7 +9,7 @@ class Admin extends Controller
     public function initialize()
     {
         //判断用户是否登录
-        if(!session('user_id')){
+        if(!session('admin_id')){
             $this->redirect('login/index');
         }
     }
@@ -19,4 +19,8 @@ class Admin extends Controller
     {
         $this->redirect('index');
     }
+
+    //获取admin目录下的所有控制器名称
+
+
 }

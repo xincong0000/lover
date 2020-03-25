@@ -1,13 +1,57 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SleepingElf</title>
-</head>
-<body>
+<!DOCTYPE html>
+<html>
 
+<head>
+    {include file="common/resources" /}
+</head>
+
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    {include file="common/header" /}
+    {include file="common/menu" /}
+
+    <!-- 内容主体区域 -->
+    <div class="layui-body" style="margin: 3%">
+        <a class="layui-btn" href="{:url('create')}">添加日志</a>
+        <ul class="layui-timeline" style="margin-top: 10px">
+            <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+            <div class="layui-timeline-content layui-text">
+                <h3 class="layui-timeline-title">2019年12月5日</h3>
+                <p>系统首页布局完成</p>
+            </div>
+        </li>
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+            <div class="layui-timeline-content layui-text">
+                <h3 class="layui-timeline-title">2019年12月3日</h3>
+                <p>给你系统首页添加九宫格菜单</p>
+                <ul>
+                    <li>系统请求接口完成</li>
+                    <li>测试系统菜单请求通过</li>
+                </ul>
+            </div>
+        </li>
+        <li class="layui-timeline-item">
+            <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+            <div class="layui-timeline-content layui-text">
+                <h3 class="layui-timeline-title">2019年12月2日</h3>
+                <p>搭建系统框架</p>
+                <ul>
+                    <li>基本确立系统功能布局</li>
+                    <li>确立系统管理模块地址，调试通过</li>
+                    <li>系统框架搭建完成</li>
+                </ul>
+            </div>
+        </li>
+        </ul>
+    </div>
+    {include file="common/footer" /}
+</div>
+<script>
+    layui.use('element', function () {
+    });
+</script>
 </body>
+
 </html>

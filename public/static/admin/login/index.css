@@ -13,8 +13,7 @@ body {
 
 .content {
     width: 400px;
-    float: right;
-    height: 100%;
+    margin: 0 auto;
 }
 
 .content form {
