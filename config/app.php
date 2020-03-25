@@ -66,7 +66,7 @@ return [
     // 默认的空模块名
     'empty_module'           => 'index',//默认空模块跳转到index
     // 默认的空控制器名
-    'empty_controller'       => 'Error',
+    'empty_controller'       => 'Index',// 默认Error,设置为index
     // 操作方法前缀
     'use_action_prefix'      => false,
     // 操作方法后缀

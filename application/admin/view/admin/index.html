@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {include file="common/resources" /}
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    {include file="common/header" /}
+    {include file="common/menu" /}
+    <!-- 内容主体区域 -->
+    <div class="layui-body" style="margin: 2%;">
+        <span class="layui-breadcrumb">
+          <a href="javascript:;">控制台</a>
+          <a href="javascript:;">管理员</a>
+          <a><cite>管理员列表</cite></a>
+        </span>
+        <a class="layui-btn layui-layout-right" href="{:url('create')}">添加</a>
+        <table class="layui-table mt">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>角色</th>
+                <th>发布时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $list as $value}
+            <tr>
+                <td>{$value.id}</td>
+                <td>{$value.name}</td>
+                <td>{$value.type}</td>
+                <td>{$value.create_time}</td>
+                <td>
+                    <a class="layui-btn" href="{:url('update',array('id'=>$value.id))}">修改</a>
+                    <input type="button" data-id="{$value.id}" class="layui-btn layui-btn-danger menu_del" value="删除">
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+    {include file="common/footer" /}
+</div>
+<div id="popups" style="display: none">
+    <div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">
+        <h2>是否确认删除？</h2><br>
+    </div>
+</div>
+</body>
+<script>
+    layui.use(['layer', 'element'], function () {
+        $(function () {
+            $(".menu_del").click(function () {
+                var id = $(this).data('id');
+                layer.open({
+                    type: 1,
+                    title: false, //不显示标题栏
+                    closeBtn: false,
+                    area: '300px;',
+                    shade: 0.8,
+                    id: 'LAY_layuipro', //设定一个id，防止重复弹出
+                    btn: ['确认', '取消'],
+                    btnAlign: 'c',
+                    moveType: 1, //拖拽模式，0或者1
+                    content: $("#popups").html(),
+                    success: function (layero) {
+                        layero.find('.layui-layer-btn0').click(function () {
+                            del(id)
+                        })
+                    }
+                });
+            });
+
+            function del(id) {
+                $.ajax({
+                    url: 'delete',
+                    data: {id: id},
+                    method: 'post',
+                    dataType: 'json',
+                    success: function (res) {
+                        layer.msg(res.msg);
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+                    }
+                })
+            }
+        })
+    });
+</script>
+
+</html>

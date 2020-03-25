@@ -6,6 +6,27 @@ use think\Model;
 
 class Admin extends Model
 {
+    //管理员角色类型
+    protected static $TYPE = [
+        1 => '系统管理员',
+        2 => '管理员',
+        3 => '监察人员',
+        4 => '公关人员',
+        5 => '商务人员',
+    ];
+
+    //获取管理员角色类型列表
+    public function getTypeList()
+    {
+        return self::$TYPE;
+    }
+
+    //获取管理员角色类型名称
+    public function getTypeName($id = '')
+    {
+        return isset(self::$TYPE[$id]) ? self::$TYPE[$id] : '';
+    }
+
     public function login($account, $password)
     {
         if (empty($account) || empty($password)) {

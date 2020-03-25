@@ -3,16 +3,25 @@
 namespace app\common\controller;
 
 use think\Controller;
+use think\facade\Env;
+use think\facade\Request;
 
 class Admin extends Controller
 {
     public function initialize()
     {
         //判断用户是否登录
-        if(!session('admin_id')){
+        if (!session('admin_id')) {
             $this->redirect('login/index');
         }
+        //菜单 ---- 开始
+        $model = model('Menu');
+        $this->assign('top_menu', $model->getTopMenu());
+        $this->assign('side_menu', $model->getSideMenu());
+        $this->assign('link_path', $this->link());
+        //菜单 ---- 结束
     }
+
 
     //空操作直接跳转到index模块
     public function _empty()
@@ -20,7 +29,91 @@ class Admin extends Controller
         $this->redirect('index');
     }
 
-    //获取admin目录下的所有控制器名称
+    //获取模块下所有的控制器和方法
+    public function structure($module = 'admin')
+    {
+        $all_controller = $this->getController($module);
+        $data = [];
+        foreach ($all_controller as $key => $controller) {
+            $all_action = $this->getAction($module, $controller);
+            $controller = str_replace('Controller', '', $controller);
+            $data[$module][$key]['module'] = $module;
+            $data[$module][$key]['controller'] = $controller;
+            $data[$module][$key]['action'] = $all_action;
+        }
+        return $data;
+    }
 
 
+    //获取所有控制器名称
+    private function getController($module = 'admin')
+    {
+        if (empty($module)) {
+            return null;
+        }
+        $module_path = Env::get('APP_PATH') . '/' . $module . '/controller/';  //控制器路径
+        if (!is_dir($module_path)) {
+            return null;
+        }
+        $module_path .= '/*.php';
+        $ary_files = glob($module_path);
+        $files = [];
+        foreach ($ary_files as $file) {
+            if (is_dir($file)) {
+                continue;
+            } else {
+                $files[] = basename($file, '.php');
+            }
+        }
+        return $files;
+    }
+
+
+    //获取所有方法名称
+    protected function getAction($module, $controller)
+    {
+        if (empty($controller) || empty($module)) {
+            return null;
+        }
+        $customer_functions = [];
+        $file = Env::get('APP_PATH') . $module . '/controller/' . $controller . '.php';
+        if (file_exists($file)) {
+            $content = file_get_contents($file);
+            preg_match_all("/.*?public.*?function(.*?)\(.*?\)/i", $content, $matches);
+            $functions = $matches[1];
+            //排除部分方法 getActionName--不必要
+            $inherents_functions = array('_initialize', 'initialize', '__construct', 'getActionName', 'isAjax', 'display', 'show', 'fetch', 'buildHtml', 'assign', '__set', 'get', '__get', '__isset', '__call', 'error', 'success', 'ajaxReturn', 'redirect', '__destruct', '_empty');
+            foreach ($functions as $func) {
+                $func = trim($func);
+                if (!in_array($func, $inherents_functions)) {
+                    $customer_functions[] = $func;
+                }
+            }
+            return $customer_functions;
+        } else {
+            return false;
+        }
+        return null;
+    }
+
+    // 获取当前路径
+    public function link()
+    {
+        $request = new Request();
+        $module = $request->instance()->module();
+        $controller = $request->instance()->controller();
+        $action = $request->instance()->controller();
+        return '/' . $module . '/' . $controller . '/' . $action;
+    }
+
+    /**
+     * @param $data
+     * @name [打印数组;暂定]
+     */
+    public function dumper($data)
+    {
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
+    }
 }

@@ -2,23 +2,28 @@
 <div class="layui-side layui-bg-black">
     <div class="layui-side-scroll">
         <ul class="layui-nav layui-nav-tree" lay-filter="test">
-            <li class="layui-nav-item">
-                <a href="javascript:;">首页</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">轮播图管理</a></dd>
-                    <dd><a href="javascript:;">菜单管理</a></dd>
-                </dl>
+
+            {foreach $side_menu as $vo}
+            <li class="layui-nav-item" data-menuid="{$vo.id}">
+                <a href="{:url($vo.link)}">{$vo.name}</a>
             </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">新闻管理</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="javascript:;">新闻列表</a></dd>
-                    <dd><a href="javascript:;">新闻分类</a></dd>
-                </dl>
-            </li>
-            <li class="layui-nav-item"><a href="javascript:;">商品管理</a></li>
-            <li class="layui-nav-item"><a href="javascript:;">留言反馈</a></li>
-            <li class="layui-nav-item"><a href="javascript:;">购物车</a></li>
+            {/foreach}
+<!--            <li class="layui-nav-item"><a href="javascript:;">留言反馈</a></li>-->
+<!--            <li class="layui-nav-item"><a href="javascript:;">购物车</a></li>-->
+<!--            <li class="layui-nav-item">-->
+<!--                <a href="javascript:;">首页</a>-->
+<!--                <dl class="layui-nav-child">-->
+<!--                    <dd><a href="javascript:;">轮播图管理</a></dd>-->
+<!--                    <dd><a href="javascript:;">菜单管理</a></dd>-->
+<!--                </dl>-->
+<!--            </li>-->
+<!--            <li class="layui-nav-item">-->
+<!--                <a href="javascript:;">新闻管理</a>-->
+<!--                <dl class="layui-nav-child">-->
+<!--                    <dd><a href="javascript:;">新闻列表</a></dd>-->
+<!--                    <dd><a href="javascript:;">新闻分类</a></dd>-->
+<!--                </dl>-->
+<!--            </li>-->
             <!-- <li class="layui-nav-item"><a href="javascript:;">菜单暂定</a></li> -->
             <!-- 一级菜单选中效果：layui-nav-itemed  -->
             <!-- <li class="layui-nav-item"> -->
