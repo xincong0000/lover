@@ -1,35 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
+
     {include file="common/resources" /}
-    <link rel="stylesheet" href="/static/admin/login/index.css">
-    <script type="text/javascript" src="/static/admin/login/index.js"></script>
+    <link rel="stylesheet" href="/static/admin/login/login.css">
+    <script type="text/javascript" src="/static/admin/login/login.js"></script>
+    <title>管理后台</title>
 </head>
-<body>
-<div class="content">
-    <form class="layui-form" action="{:url('login')}" method="post">
-        <div class="layui-form-item">
-            <h1>Elf-Porridge</h1>
+<body class="login-wrap">
+<div class="login-container">
+    <form class="login-form" action="{:url('login')}" method="post">
+        <div class="input-group">
+            <input type="text" id="username" name="account" class="input-field">
+            <label for="username" class="input-label account">
+                <span class="label-title">Account</span>
+            </label>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">Account</label>
-            <div class="layui-input-inline">
-                <input type="text" name="account" lay-verify="title" autocomplete="off" class="layui-input">
-            </div>
+        <div class="input-group">
+            <input type="password" id="password" name="password" class="input-field">
+            <label for="password" class="input-label password">
+                <span class="label-title">Password</span>
+            </label>
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">Password</label>
-            <div class="layui-input-inline">
-                <input type="password" name="password" lay-verify="password" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <!-- lay-submit="" 触发验证 -->
-                <button type="submit" class="layui-btn" lay-submit="">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-            </div>
-        </div>
+        <button type="submit" class="login-button">login<i class="ai ai-enter"></i></button>
     </form>
 </div>
 </body>

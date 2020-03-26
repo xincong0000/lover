@@ -161,3 +161,10 @@ body{
         transform: translateY(-50%);
     }
 }
+.su {
+    outline: none;
+    -webkit-animation: fieldUp 0.3s forwards;
+    animation: fieldUp 0.3s forwards;
+    font-size: 12px;
+    color: #ccc !important;
+}
