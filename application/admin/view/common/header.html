@@ -1,6 +1,5 @@
 <!-- 头部区域（可配合layui已有的水平导航） -->
 <div class="layui-header">
-    <div class="layui-logo">Sleeping Elf</div>
     <ul class="layui-nav layui-layout-left">
         {foreach $top_menu as $vo}
             <li class="layui-nav-item" data-menuid="{$vo.id}">
@@ -26,31 +25,9 @@
             </a>
             <dl class="layui-nav-child">
                 <dd><a href="javascript:;" id="clearCache">清除缓存</a></dd>
-<!--                <dd><a href="javascript:;">安全设置</a></dd>-->
+                <!--<dd><a href="javascript:;">安全设置</a></dd>-->
             </dl>
         </li>
-        <li class="layui-nav-item"><a href="javascript:;">退出</a></li>
+        <li class="layui-nav-item" ><a href="javascript:;"id="sign_out">退出</a></li>
     </ul>
 </div>
-<script>
-    layui.use(['layer', 'element'], function () {
-        $(function () {
-            //清除缓存
-            $("#clearCache").click(function () {
-                // $.ajax({
-                //     url: 'mint/index/clearCache',
-                //     method: 'post',
-                //     data: {},
-                //     dataType: 'json',
-                //     success: function (res) {
-                //         console.log(res);
-                //         layer.msg(res.msg);
-                //         setTimeout(function () {
-                //             window.location.reload();
-                //         }, 1500);
-                //     }
-                // })
-            })
-        })
-    })
-</script>

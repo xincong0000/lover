@@ -5,6 +5,7 @@ namespace app\common\controller;
 use think\Controller;
 use think\facade\Env;
 use think\facade\Request;
+// use app\common\controller\Clearcache;
 
 class Admin extends Controller
 {
@@ -20,6 +21,14 @@ class Admin extends Controller
         $this->assign('side_menu', $model->getSideMenu());
         $this->assign('link_path', $this->link());
         //菜单 ---- 结束
+    }
+
+    //清除缓存
+    public function clearCache()
+    {
+        $clearCache = new Clearcache();
+        $clearCache->index();
+        return json(['code' => 1, 'msg' => '缓存已清理']);
     }
 
 
@@ -102,18 +111,7 @@ class Admin extends Controller
         $request = new Request();
         $module = $request->instance()->module();
         $controller = $request->instance()->controller();
-        $action = $request->instance()->controller();
+        $action = $request->instance()->action();
         return '/' . $module . '/' . $controller . '/' . $action;
-    }
-
-    /**
-     * @param $data
-     * @name [打印数组;暂定]
-     */
-    public function dumper($data)
-    {
-        echo '<pre>';
-        print_r($data);
-        echo '</pre>';
     }
 }

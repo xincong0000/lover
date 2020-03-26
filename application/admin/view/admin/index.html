@@ -9,13 +9,15 @@
     {include file="common/header" /}
     {include file="common/menu" /}
     <!-- 内容主体区域 -->
-    <div class="layui-body" style="margin: 2%;">
+    <div class="layui-body">
         <span class="layui-breadcrumb">
           <a href="javascript:;">控制台</a>
           <a href="javascript:;">管理员</a>
           <a><cite>管理员列表</cite></a>
         </span>
-        <a class="layui-btn layui-layout-right" href="{:url('create')}">添加</a>
+        <span class="layui-layout-right">
+            <a class="layui-btn" href="{:url('create')}">添加</a>
+        </span>
         <table class="layui-table mt">
             <thead>
             <tr>

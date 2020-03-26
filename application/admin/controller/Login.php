@@ -13,8 +13,10 @@ class Login extends Controller
 {
     public function initialize()
     {
+        $request = new \think\facade\Request();
+        $action = $request->instance()->action();
         //判断用户是否登录--已经登录跳转到后台首页(禁止未退出后重新登录)
-        if(session('admin_id')){
+        if (session('admin_id') && $action != 'logout') {
             $this->redirect('index/index');
         }
     }
@@ -42,7 +44,7 @@ class Login extends Controller
     public function logout()
     {
         session_destroy();
-
+        return json(['code' => 1, 'msg' => '已退出', 'link' => url('login/index')]);
         //删除session的几种方式
 
         //unset($_SESSION['XXX']); 使用 unset() 函数时，只能销毁 Session 中单一变量，不可以一次注销整个数组，这样会禁止整个会话的功能，
