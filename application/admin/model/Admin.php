@@ -6,7 +6,7 @@ use think\Model;
 
 class Admin extends Model
 {
-    //管理员角色类型
+    //管理员角色类型1
     protected static $TYPE = [
         1 => '系统管理员',
         2 => '管理员',
