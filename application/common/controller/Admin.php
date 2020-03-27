@@ -5,7 +5,7 @@ namespace app\common\controller;
 use think\Controller;
 use think\facade\Env;
 use think\facade\Request;
-// use app\common\controller\Clearcache;
+use app\common\controller\Clearcache;
 
 class Admin extends Controller
 {
@@ -31,7 +31,6 @@ class Admin extends Controller
         return json(['code' => 1, 'msg' => '缓存已清理']);
     }
 
-
     //空操作直接跳转到index模块
     public function _empty()
     {
@@ -52,7 +51,6 @@ class Admin extends Controller
         }
         return $data;
     }
-
 
     //获取所有控制器名称
     private function getController($module = 'admin')
@@ -76,7 +74,6 @@ class Admin extends Controller
         }
         return $files;
     }
-
 
     //获取所有方法名称
     protected function getAction($module, $controller)
@@ -114,4 +111,5 @@ class Admin extends Controller
         $action = $request->instance()->action();
         return '/' . $module . '/' . $controller . '/' . $action;
     }
+
 }

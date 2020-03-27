@@ -10,5 +10,4 @@ class Index extends Admin
     {
         return $this->fetch();
     }
-
 }

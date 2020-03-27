@@ -6,24 +6,66 @@
     <script type="text/javascript" src="/static/admin/login/login.js"></script>
     <title>SleepingElf</title>
 </head>
-<body class="login-wrap">
-<div class="login-container">
-    <form class="login-form" action="{:url('login')}" method="post">
-        <div class="input-group"><h2>SleepingElf</h2></div>
-        <div class="input-group">
-            <input type="text" id="username" name="account" class="input-field">
-            <label for="username" class="input-label account">
-                <span class="label-title">Account</span>
-            </label>
+<body layadmin-themealias="default" class="layui-layout-body" style="">
+<div id="LAY_app" class="layadmin-tabspage-none">
+    <div class="layadmin-user-login layadmin-user-display-show">
+        <div class="layadmin-user-login-main">
+            <div class="layadmin-user-login-box layadmin-user-login-header">
+                <h2>Sleeping-Elf</h2>
+                <p>私人小站，谢绝访问</p>
+            </div>
+            <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+                <form action="{:url('login')}" method="post">
+                    <div class="layui-form-item">
+                        <label class="layadmin-user-login-icon layui-icon layui-icon-username"
+                               for="LAY-user-login-username"></label>
+                        <input type="text" name="account" id="LAY-user-login-username" lay-verify="required"
+                               placeholder="账号" class="layui-input">
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layadmin-user-login-icon layui-icon layui-icon-password"
+                               for="LAY-user-login-password"></label>
+                        <input type="password" name="password" id="LAY-user-login-password" lay-verify="required"
+                               placeholder="密码" class="layui-input">
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-row">
+                            <div class="layui-col-xs7">
+                                <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
+                                       for="LAY-user-login-vercode"></label>
+                                <input type="text" name="verify" id="LAY-user-login-vercode" lay-verify="required"
+                                       placeholder="图形验证码" class="layui-input">
+                            </div>
+                            <div class="layui-col-xs5">
+                                <div style="margin-left: 10px;">
+                                    <img src="{:url('verify')}" onclick="this.src =this.src+'?a='+Math.random()"
+                                         class="layadmin-user-login-codeimg" id="LAY-user-get-vercode">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <input type="submit" class="layui-btn layui-btn-fluid" value="登 录">
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="input-group">
-            <input type="password" id="password" name="password" class="input-field">
-            <label for="password" class="input-label password">
-                <span class="label-title">Password</span>
-            </label>
+
+        <div class="layui-trans layadmin-user-login-footer">
+            <p>© 2020 <a href="javascript:;">只为等你</a></p>
+            <p>
+                <span><a href="javascript:;">无人无我立黄昏</a></span>
+                <span><a href="javascript:;">无人问我粥可温</a></span>
+            </p>
         </div>
-        <button type="submit" class="login-button">login<i class="ai ai-enter"></i></button>
-    </form>
+
+    </div>
 </div>
+
+
+<style id="LAY_layadmin_theme">
+
+</style>
+<div class="layui-layer-move"></div>
 </body>
 </html>

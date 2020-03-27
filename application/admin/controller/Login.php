@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 use think\Request;
+use think\captcha\Captcha;
 
 /**
  * Class Login 管理员登录--后台系统必须登录
@@ -30,6 +31,11 @@ class Login extends Controller
     //用户登录
     public function login(Request $request)
     {
+        $verify = $request->post('verify', '', 'htmlspecialchars');
+        $captcha = new Captcha();
+        if (!$captcha->check($verify, 1)) {
+            return json(['code' => 2, 'msg' => '验证码错误']);
+        }
         $account = $request->post('account', '', 'htmlspecialchars');
         $password = $request->post('password', '', 'htmlspecialchars');
         $result = model('Admin')->login($account, $password);
@@ -41,10 +47,16 @@ class Login extends Controller
     }
 
     //用户退出登录
+
+    /**
+     * @return \think\response\Json [返回首页]
+     */
     public function logout()
     {
         session_destroy();
         return json(['code' => 1, 'msg' => '已退出', 'link' => url('login/index')]);
+
+
         //删除session的几种方式
 
         //unset($_SESSION['XXX']); 使用 unset() 函数时，只能销毁 Session 中单一变量，不可以一次注销整个数组，这样会禁止整个会话的功能，
@@ -66,5 +78,15 @@ class Login extends Controller
         //在用户浏览器的 Cookie 中，保存 Session ID 的 Cookie 标识名称就是 Session 的名称，
         //这个名称是在 php.ini 中，通过 session.name 属性指定的值。在php脚本中，可以通过 session_name() 函数获取 Session 的名称。
         // 删除保存在客户端 Cookie 中的 Session ID。
+    }
+
+    /**
+     * 管理员登录生成验证码
+     * @return \think\Response [返回验证码地址]
+     */
+    public function verify()
+    {
+        $captcha = new Captcha();
+        return $captcha->entry(1);
     }
 }

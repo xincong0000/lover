@@ -6,31 +6,29 @@ $(function () {
             url: '/admin/login/logout',
             type: 'POST',
             success: function (result) {
-                console.log(result)
                 notice(result.msg);
                 setTimeout(function () {
-                    window.location.reload();
+                    window.location.href = result.link;
                 }, 1500);
             }
         })
     })
+
     //清除缓存
     $("#clearCache").click(function () {
         $.ajax({
-            url: 'clearCache',
+            url: '/admin/index/clearCache',
             method: 'post',
             data: {},
             dataType: 'json',
             success: function (res) {
-                console.log(res);
                 layer.msg(res.msg);
                 setTimeout(function () {
                     window.location.reload();
                 }, 1500);
             }
         })
-    })
-
+    });
 
     //Show notification information
     function notice(msg) {

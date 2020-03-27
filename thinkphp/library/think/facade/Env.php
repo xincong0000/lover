@@ -31,16 +31,4 @@ class Env extends Facade
     {
         return 'env';
     }
-    /**
-     * 系统路径         Env参数名称
-     * 应用根目录	    root_path
-     * 应用目录	        app_path
-     * 框架目录	        think_path
-     * 配置目录	        config_path
-     * 扩展目录	        extend_path
-     * composer目录	    vendor_path
-     * 运行缓存目录	    runtime_path
-     * 路由目录	        route_path
-     * 当前模块目录	    module_path
-    */
 }
