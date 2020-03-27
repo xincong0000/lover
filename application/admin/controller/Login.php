@@ -16,7 +16,7 @@ class Login extends Controller
     {
         $request = new \think\facade\Request();
         $action = $request->instance()->action();
-        //判断用户是否登录--已经登录跳转到后台首页(禁止未退出后重新登录)
+        //判断用户是否登录--已经登录跳转到后台首页(禁止未退出后再次登录)
         if (session('admin_id') && $action != 'logout') {
             $this->redirect('index/index');
         }
