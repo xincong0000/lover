@@ -16,7 +16,7 @@ class Admin extends Controller
             $this->redirect('login/index');
         }
         //菜单 ---- 开始
-        $model = model('Menu');
+        $model = model('common/Menu');
         $this->assign('top_menu', $model->getTopMenu());
         $this->assign('side_menu', $model->getSideMenu());
         $this->assign('link_path', $this->link());
