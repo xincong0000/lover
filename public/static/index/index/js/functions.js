@@ -2,6 +2,13 @@ var $window = $(window), gardenCtx, gardenCanvas, $garden, garden;
 var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 $(function () {
+    $.fn.snow({
+        minSize: 5,		//雪花的最小尺寸
+        maxSize: 50, 	//雪花的最大尺寸
+        newOn: 150		//雪花出现的频率 这个数值越小雪花越多
+    });
+    
+
     $loveHeart = $("#loveHeart");
     var a = $loveHeart.width() / 2;
     var b = $loveHeart.height() / 2 - 55;
@@ -69,7 +76,7 @@ function timeElapse(c) {
     f = f % 3600; var d = Math.floor(f / 60);
     if (d < 10) { d = "0" + d }
     f = f % 60; if (f < 10) { f = "0" + f }
-    var a = '<span class="digit">' + g + '</span> days <span class="digit">' + b + '</span> hours <span class="digit">' + d + '</span> minutes <span class="digit">' + f + "</span> seconds"; $("#elapseClock").html(a)
+    var a = '<span class="digit">' + g + '</span> 天 <span class="digit">' + b + '</span> 小时 <span class="digit">' + d + '</span> 分钟 <span class="digit">' + f + "</span> 秒"; $("#elapseClock").html(a)
 }
 function showMessages() {
     adjustWordsPosition();
