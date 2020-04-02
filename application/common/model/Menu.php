@@ -9,7 +9,7 @@ class Menu extends Model
     private static $STATUS = [
         1 => '正常',
         2 => '禁用',
-        3 => '标记',//对于一级菜单的删除需要提前进行标记，类似于预约删除
+        3 => '标记', //对于一级菜单的删除需要提前进行标记，类似于预约删除
         4 => '删除',
     ];
 
@@ -28,6 +28,6 @@ class Menu extends Model
     public function getTopMenu()
     {
         //获取头部菜单列表
-        return $this->where(['level' => 1, 'status' => 1])->order('id asc')->select();
+        return $this->where(['level' => 1, 'status' => 1])->order('id asc')->field(['id', 'name', 'link'])->select();
     }
 }

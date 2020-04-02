@@ -20,6 +20,7 @@ class Admin extends Controller
         $this->assign('top_menu', $model->getTopMenu());
         $this->assign('side_menu', $model->getSideMenu());
         $this->assign('link_path', $this->link());
+        $this->assign('admin_name', session('admin_name'));
         //菜单 ---- 结束
     }
 
@@ -111,5 +112,4 @@ class Admin extends Controller
         $action = $request->instance()->action();
         return '/' . $module . '/' . $controller . '/' . $action;
     }
-
 }

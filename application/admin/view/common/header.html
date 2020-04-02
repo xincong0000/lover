@@ -2,32 +2,32 @@
 <div class="layui-header">
     <ul class="layui-nav layui-layout-left">
         {foreach $top_menu as $vo}
-            <li class="layui-nav-item" data-menuid="{$vo.id}">
-                <a href="{:url($vo.link)}">{$vo.name}</a>
-            </li>
+        <li class="layui-nav-item" data-menuid="{$vo.id}">
+            <a href="{:url($vo.link)}">{$vo.name}</a>
+        </li>
         {/foreach}
-<!--        <li class="layui-nav-item"><a href="javascript:;">文章</a></li>-->
-<!--        <li class="layui-nav-item"><a href="javascript:;">用户</a></li>-->
-<!--        <li class="layui-nav-item">-->
-<!--            <a href="javascript:;">其它</a>-->
-<!--            <dl class="layui-nav-child">-->
-<!--                <dd><a href="javascript:;" id="ClearCache">清除缓存</a></dd>-->
-<!--                <dd><a href="javascript:;">消息管理</a></dd>-->
-<!--                <dd><a href="javascript:;">授权管理</a></dd>-->
-<!--            </dl>-->
-<!--        </li>-->
+        <!--        <li class="layui-nav-item"><a href="javascript:;">文章</a></li>-->
+        <!--        <li class="layui-nav-item"><a href="javascript:;">用户</a></li>-->
+        <!--        <li class="layui-nav-item">-->
+        <!--            <a href="javascript:;">其它</a>-->
+        <!--            <dl class="layui-nav-child">-->
+        <!--                <dd><a href="javascript:;" id="ClearCache">清除缓存</a></dd>-->
+        <!--                <dd><a href="javascript:;">消息管理</a></dd>-->
+        <!--                <dd><a href="javascript:;">授权管理</a></dd>-->
+        <!--            </dl>-->
+        <!--        </li>-->
     </ul>
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
             <a href="javascript:;">
                 <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                SleepingElf
+                {$admin_name}
             </a>
             <dl class="layui-nav-child">
                 <dd><a href="javascript:;" id="clearCache">清除缓存</a></dd>
                 <!--<dd><a href="javascript:;">安全设置</a></dd>-->
             </dl>
         </li>
-        <li class="layui-nav-item" ><a href="javascript:;"id="sign_out">退出</a></li>
+        <li class="layui-nav-item"><a href="javascript:;" id="sign_out">退出</a></li>
     </ul>
 </div>

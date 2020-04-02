@@ -40,6 +40,7 @@ class Admin extends Model
             return ['code' => 2, 'msg' => 'Password Error'];
         }
         session('admin_id', $result['id']);
+        session('admin_name', $result['name']);
         if (!session('admin_id')) {
             return ['code' => 2, 'msg' => 'Server failure'];
         }
