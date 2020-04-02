@@ -76,7 +76,7 @@ function timeElapse(c) {
     f = f % 3600; var d = Math.floor(f / 60);
     if (d < 10) { d = "0" + d }
     f = f % 60; if (f < 10) { f = "0" + f }
-    var a = '<span class="digit">' + g + '</span> 天 <span class="digit">' + b + '</span> 小时 <span class="digit">' + d + '</span> 分钟 <span class="digit">' + f + "</span> 秒"; $("#elapseClock").html(a)
+    var a = '<span class="digit">' + g + '</span>天<span class="digit">' + b + '</span>小时<span class="digit">' + d + '</span>分钟<span class="digit">' + f + "</span>秒"; $("#elapseClock").html(a)
 }
 function showMessages() {
     adjustWordsPosition();
