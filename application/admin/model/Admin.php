@@ -30,20 +30,20 @@ class Admin extends Model
     public function login($account, $password)
     {
         if (empty($account) || empty($password)) {
-            return ['code' => 2, 'msg' => 'Account or password cannot be empty'];
+            return ['code' => 2, 'msg' => '账号或者密码不得为空'];
         }
         $result = $this->where(['account' => $account])->find();
         if (!$result) {
-            return ['code' => 2, 'msg' => 'user Does Not Exist'];
+            return ['code' => 2, 'msg' => '用户不存在'];
         }
         if ($password != $result['password']) {
-            return ['code' => 2, 'msg' => 'Password Error'];
+            return ['code' => 2, 'msg' => '密码错误'];
         }
         session('admin_id', $result['id']);
         session('admin_name', $result['name']);
-        if (!session('admin_id')) {
-            return ['code' => 2, 'msg' => 'Server failure'];
+        if (!session('admin_id') || !session('admin_name')) {
+            return ['code' => 2, 'msg' => '服务器运行出错'];
         }
-        return ['code' => 1, 'msg' => 'Login successfully'];
+        return ['code' => 1, 'msg' => '登录成功'];
     }
 }
