@@ -1,5 +1,5 @@
 /**
- * js网页雪花效果jquery插件 
+ * js网页雪花效果jquery插件
  */
 (function ($) {
 
@@ -12,7 +12,7 @@
 				minSize: 10,		//雪花的最小尺寸
 				maxSize: 20,		//雪花的最大尺寸
 				newOn: 1000,		//雪花出现的频率
-				flakeColor: "#FFFFFF"	
+				flakeColor: "#FFFFFF"
 			},
 			options = $.extend({}, defaults, options);
 
@@ -23,7 +23,7 @@
 				endPositionTop = documentHeight - 40,
 				endPositionLeft = startPositionLeft - 100 + Math.random() * 500,
 				durationFall = documentHeight * 10 + Math.random() * 5000;
-			$flake.clone().appendTo('body').css({
+			$flake.clone().appendTo('.layui-body').css({//雪花生成地址
 				left: startPositionLeft,
 				opacity: startOpacity,
 				'font-size': sizeFlake,

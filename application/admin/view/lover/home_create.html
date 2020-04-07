@@ -18,44 +18,43 @@
           <a><cite>添加图标</cite></a>
         </span>
         <div class="layui-fluid">
-            <form action="{:url('additions')}" method="post">
+            <form action="{:url('home_additions')}" method="post">
                 <div class="layui-row layui-col-space15">
                     <div class="layui-fluid">
                         <div class="layui-card">
-                            <div class="layui-card-header">图标名称</div>
+                            <div class="layui-card-header">内容</div>
                             <div class="layui-card-body layui-row layui-col-space10">
-                                <div class="layui-col-md6">
-                                    <input type="text" name="name" placeholder="图标名称" autocomplete="off"
-                                           class="layui-input">
+                                <div class="layui-col-md12">
+                                    <textarea name="content" placeholder="请输入" class="layui-textarea"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="layui-card">
-                            <div class="layui-card-header">图标内容</div>
+                            <div class="layui-card-header">排序</div>
                             <div class="layui-card-body layui-row layui-col-space10">
                                 <div class="layui-col-md6">
-                                    <input type="text" name="link" placeholder="图标类名或链接地址" autocomplete="off"
+                                    <input type="text" name="sort" placeholder="排序越小越靠前" autocomplete="off"
                                            class="layui-input">
                                 </div>
                             </div>
                         </div>
                         <div class="layui-card layui-form" lay-filter="component-form-element">
-                            <div class="layui-card-header">图标类型</div>
+                            <div class="layui-card-header">类型</div>
                             <div class="layui-card-body layui-row layui-col-space10">
                                 <div class="layui-col-md6">
                                     <select name="type" lay-verify="required" lay-search="">
-                                        <option value="">请选择图标类型</option>
-                                        <option value="1">内置图标</option>
-                                        <option value="2">普通图标</option>
+                                        <option value="">请选择类型</option>
+                                        <option value="1">头部</option>
+                                        <option value="2">尾部</option>
                                     </select>
                                     <div class="layui-form-select">
                                         <div class="layui-select-title">
-                                            <input type="text"placeholder="带搜索的选择框" value="" class="layui-input">
+                                            <input type="text"placeholder="类型" value="" class="layui-input">
                                             <i class="layui-edge"></i>
                                         </div>
                                         <dl class="layui-anim layui-anim-upbit">
-                                            <option value="1">内置图标</option>
-                                            <option value="2">普通图标</option>
+                                            <option value="1">头部</option>
+                                            <option value="2">尾部</option>
                                         </dl>
                                     </div>
                                 </div>

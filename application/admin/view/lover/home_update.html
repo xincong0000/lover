@@ -18,43 +18,42 @@
           <a><cite>图标修改</cite></a>
         </span>
         <div class="layui-fluid">
-            <form action="{:url('edit')}" method="post">
+            <form action="{:url('home_edit')}" method="post">
                 <input type="hidden" name="id" value="{$detail.id}">
                 <div class="layui-row layui-col-space15">
                     <div class="layui-fluid">
                         <div class="layui-card">
-                            <div class="layui-card-header">图标名称</div>
+                            <div class="layui-card-header">内容</div>
                             <div class="layui-card-body layui-row layui-col-space10">
-                                <div class="layui-col-md6">
-                                    <input type="text" name="name" placeholder="图标名称" autocomplete="off"
-                                           class="layui-input" value="{$detail.name}">
+                                <div class="layui-col-md12">
+                                    <textarea name="content" placeholder="请输入" class="layui-textarea">{$detail.content}</textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="layui-card">
-                            <div class="layui-card-header">图标内容</div>
+                            <div class="layui-card-header">排序</div>
                             <div class="layui-card-body layui-row layui-col-space10">
                                 <div class="layui-col-md6">
-                                    <input type="text" name="link" placeholder="图标类名或链接地址" autocomplete="off"
-                                           class="layui-input" value="{$detail.link}">
+                                    <input type="text" name="sort" placeholder="排序越小越靠前" autocomplete="off"
+                                           class="layui-input" value="{$detail.sort}">
                                 </div>
                             </div>
                         </div>
                         <div class="layui-card layui-form" lay-filter="component-form-element">
-                            <div class="layui-card-header">图标类型{$detail.type}</div>
+                            <div class="layui-card-header">图标类型</div>
                             <div class="layui-card-body layui-row layui-col-space10">
                                 <div class="layui-col-md6">
                                     <select name="type" lay-verify="required" lay-search="">
                                         <option value="">请选择图标类型</option>
                                         {if $detail.type == 1 }
-                                        <option value="1" selected>内置图标</option>
+                                        <option value="1" selected>头部</option>
                                         {else}
-                                        <option value="1">内置图标</option>
+                                        <option value="1">头部</option>
                                         {/if}
                                         {if $detail.type == 2 }
-                                        <option value="2" selected>普通图标</option>
+                                        <option value="2" selected>尾部</option>
                                         {else}
-                                        <option value="2">普通图标</option>
+                                        <option value="2">尾部</option>
                                         {/if}
                                     </select>
                                     <div class="layui-form-select">
@@ -63,8 +62,8 @@
                                             <i class="layui-edge"></i>
                                         </div>
                                         <dl class="layui-anim layui-anim-upbit">
-                                            <option value="1">内置图标</option>
-                                            <option value="2">普通图标</option>
+                                            <option value="1">头部</option>
+                                            <option value="2">尾部</option>
                                         </dl>
                                     </div>
                                 </div>

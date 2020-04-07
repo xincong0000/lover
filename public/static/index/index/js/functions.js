@@ -9,9 +9,9 @@ $(function () {
     });
 
     $loveHeart = $("#loveHeart");
-    var a = $loveHeart.width() / 2;
-    var b = $loveHeart.height() / 2 - 55;
-    $garden = $("#garden"); 
+    var a = $loveHeart.width();
+    var b = $loveHeart.height();
+    $garden = $("#garden");
     gardenCanvas = $garden[0];
     gardenCanvas.width = $("#loveHeart").width();
     gardenCanvas.height = $("#loveHeart").height();
