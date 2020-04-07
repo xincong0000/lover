@@ -113,4 +113,17 @@ class Admin extends Controller
         $action = $request->instance()->action();
         return '/' . $module . '/' . $controller . '/' . $action;
     }
+
+
+    /**
+     * 上传图片[未测试]
+     * @param Request $request
+     * @return Json
+     */
+    public function uploadImg(Request $request)
+    {
+        $domainName = $request->domain();
+        $result = model('Upload')->img($_FILES['file'], $domainName);
+        return json($result);
+    }
 }
