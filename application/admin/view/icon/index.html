@@ -99,7 +99,7 @@
                 <td>{$value.name}</td>
                 <td>{$value.type_name}</td>
                 <td>
-                    <i class="layui-icon {$value.class} show_icon"></i>
+                    <i class="layui-icon {$value.link} show_icon"></i>
                 </td>
                 <td>{$value.create_time}</td>
                 <td>
@@ -126,22 +126,22 @@
     layui.use(['layer', 'element'], function () {
         $(function () {
             $(".tab_del").click(function () {
-                // var id = $(this).data('id');
-                let del = layer.msg('是否确认删除？', {
+                var id = $(this).data('id');
+                let dele = layer.msg('是否确认删除？', {
                     time: 20000, //20s后自动关闭
                     btn: ['确认', '取消'],
                     btn1: function () {
+                        del(id) //调用删除函数
                         console.log(123)
-                        layer.close(del)
+                        layer.close(dele)
                         // layer.closeAll();//关闭全部弹窗
-                        // del(id) //调用删除函数
                     }
                 });
-            });
 
+            });
             function del(id) {
                 $.ajax({
-                    url: 'delete',
+                    url: 'del',
                     data: {id: id},
                     method: 'post',
                     dataType: 'json',

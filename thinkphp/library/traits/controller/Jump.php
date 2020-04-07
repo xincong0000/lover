@@ -32,11 +32,11 @@ trait Jump
      * @param  mixed     $msg 提示信息
      * @param  string    $url 跳转的URL地址
      * @param  mixed     $data 返回的数据
-     * @param  integer   $wait 跳转等待时间
+     * @param  integer   $wait 跳转等待时间 [修改默认为0]
      * @param  array     $header 发送的Header信息
      * @return void
      */
-    protected function success($msg = '', $url = null, $data = '', $wait = 3, array $header = [])
+    protected function success($msg = '', $url = null, $data = '', $wait = 0, array $header = [])
     {
         if (is_null($url) && isset($_SERVER["HTTP_REFERER"])) {
             $url = $_SERVER["HTTP_REFERER"];
@@ -69,11 +69,11 @@ trait Jump
      * @param  mixed     $msg 提示信息
      * @param  string    $url 跳转的URL地址
      * @param  mixed     $data 返回的数据
-     * @param  integer   $wait 跳转等待时间
+     * @param  integer   $wait 跳转等待时间 [修改默认为0]
      * @param  array     $header 发送的Header信息
      * @return void
      */
-    protected function error($msg = '', $url = null, $data = '', $wait = 3, array $header = [])
+    protected function error($msg = '', $url = null, $data = '', $wait = 0, array $header = [])
     {
         $type = $this->getResponseType();
         if (is_null($url)) {
