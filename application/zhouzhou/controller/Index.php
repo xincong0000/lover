@@ -1,11 +1,15 @@
 <?php
 
-namespace app\index\controller;
+namespace app\zhouzhou\controller;
 
-use app\common\controller\Index as Cindex;
+use think\Controller;
 
-class Index extends Cindex
+class Index extends Controller
 {
+    /**
+     * 粥粥
+     * just for you
+     */
     public function index()
     {
         $topList = model('LoverHome')->where(['type' => 1])->field(['content', 'id'])->order(['sort', 'id'])->select();
