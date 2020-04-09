@@ -5,11 +5,14 @@ namespace app\common\controller;
 use think\Controller;
 use think\facade\Env;
 use think\facade\Request;
-use app\common\controller\Clearcache;
+use think\Request as ReqT;
+
+//use app\common\controller\Clearcache;
 
 class Admin extends Controller
 {
     protected $TOP_MENU = 1;
+
     public function initialize()
     {
         //判断用户是否登录
@@ -120,7 +123,7 @@ class Admin extends Controller
      * @param Request $request
      * @return Json
      */
-    public function uploadImg(Request $request)
+    public function uploadImg(ReqT $request)
     {
         $domainName = $request->domain();
         $result = model('Upload')->img($_FILES['file'], $domainName);

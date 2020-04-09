@@ -6,3 +6,4 @@
 /runtime
 config/database.php
 config/database.php
+/public/upload/image/
