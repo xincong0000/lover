@@ -73,7 +73,15 @@ class Lover extends Admin
     //日记 ---start
     public function diary()
     {
-        $list = model('LoverDiary')->order('id')->select();
+        $pageConfig = [
+            'type' => 'Adminpage', //分页类名
+            'var_page' => 'page',
+            // 'query' => ['keyword' => $keyword], // url额外参数
+        ];
+        $list = model('LoverDiary')->alias('d')
+            ->leftJoin('image i','d.image_id = i.id')
+            ->field(['d.id','d.content','d.sort','i.url_link as link'])
+            ->order(['d.id', 'd.sort'])->paginate(10, false, $pageConfig);
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -88,7 +96,7 @@ class Lover extends Admin
     public function diary_additions(Request $request)
     {
         $data = $request->post();
-        return model('Icon')->additions($data);
+        return model('LoverDiary')->additions($data);
     }
 
     //修改界面
@@ -98,7 +106,12 @@ class Lover extends Admin
         if ($id == 0) {
             $this->error('图标数据不存在');
         }
-        $detail = model('Icon')->where(['id' => $id])->find();
+//        $detail = model('Icon')->where(['id' => $id])->find();
+
+        $detail = model('LoverDiary')->alias('d')->where(['d.id' => $id])
+            ->leftJoin('image i','d.image_id = i.id')
+            ->field(['d.id','d.content','d.sort','i.url_link as link','d.image_id'])
+            ->find();
         $this->assign('detail', $detail);
         return $this->fetch();
     }
@@ -107,14 +120,14 @@ class Lover extends Admin
     public function diary_edit(Request $request)
     {
         $data = $request->post();
-        return model('Icon')->edit($data);
+        return model('LoverDiary')->edit($data);
     }
 
     // 删除
     public function diary_del(Request $request)
     {
         $id = $request->post('id', 0, 'intval');
-        return model('Icon')->del($id);
+        return model('LoverDiary')->del($id);
     }
     //日记 ---end
 }

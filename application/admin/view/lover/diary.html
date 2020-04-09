@@ -14,7 +14,7 @@
     <div class="layui-body">
         <span class="layui-breadcrumb">
           <a href="javascript:;">lover</a>
-          <a href="javascript:;">首页</a>
+          <a href="javascript:;">日记</a>
           <a><cite>列表</cite></a>
         </span>
         <span class="layui-layout-right">
@@ -26,6 +26,7 @@
                 <th>ID</th>
                 <th>图片地址</th>
                 <th>内容</th>
+                <th>排序</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -33,8 +34,9 @@
             {foreach $list as $value}
             <tr>
                 <td>{$value.id}</td>
-                <td>{$value.img}</td>
+                <td><img src="{$value.link}" alt="{$value.link}"></td>
                 <td>{$value.content}</td>
+                <td>{$value.sort}</td>
                 <td>
                     <div class="layui-table-cell laytable-cell-3-0-9">
                         <a class="layui-btn layui-btn-normal layui-btn-xs"

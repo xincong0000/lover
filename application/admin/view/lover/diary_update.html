@@ -15,10 +15,11 @@
         <span class="layui-breadcrumb">
           <a href="javascript:;">控制台</a>
           <a href="javascript:;">日记管理</a>
-          <a><cite>添加日记</cite></a>
+          <a><cite>修改日记</cite></a>
         </span>
         <div class="layui-fluid">
-            <form action="{:url('diary_additions')}" method="post">
+            <form action="{:url('diary_edit')}" method="post">
+                <input type="hidden" name="id" value="{$detail.id}">
                 <div class="layui-row layui-col-space15">
                     <div class="layui-fluid">
                         <div class="layui-card">
@@ -28,9 +29,9 @@
                                     <button class="layui-btn" type="button" id="diary_upload">
                                         <i class="layui-icon"></i>上传图片
                                     </button>
-                                    <input type="hidden" name="image_id" value="">
+                                    <input type="hidden" name="image_id" value="{$detail.image_id}">
                                     <div class="layui-upload-list">
-                                        <img class="layui-upload-img" id="upload_img">
+                                        <img class="layui-upload-img" id="upload_img" src="{$detail.link}" alt="{$detail.link}">
                                     </div>
                                 </div>
                             </div>
@@ -39,7 +40,8 @@
                             <div class="layui-card-header">内容</div>
                             <div class="layui-card-body layui-row layui-col-space10">
                                 <div class="layui-col-md12">
-                                    <textarea name="content" placeholder="请输入" class="layui-textarea"></textarea>
+                                    <textarea name="content" placeholder="请输入"
+                                              class="layui-textarea">{$detail.content}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +50,7 @@
                             <div class="layui-card-body layui-row layui-col-space10">
                                 <div class="layui-col-md6">
                                     <input type="text" name="sort" placeholder="排序越小越靠前" autocomplete="off"
-                                           class="layui-input">
+                                           class="layui-input" value="{$detail.sort}">
                                 </div>
                             </div>
                         </div>
@@ -80,7 +82,7 @@
                     //上传完毕回调
                     if (res.code == 1) {
                         $("input[name=image_id]").val(res.id)
-                        $("#upload_img").attr('src',res.link)
+                        $("#upload_img").attr('src', res.link)
                     }
                     layer.msg(res.msg);
                 },

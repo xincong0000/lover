@@ -13,7 +13,7 @@ class LoverDiary extends Model
         if (!$result) {
             return ['code' => 2, 'msg' => '新增失败'];
         }
-        return ['code' => 1, 'msg' => '新增成功', 'link' => url('index')];
+        return ['code' => 1, 'msg' => '新增成功', 'link' => url('diary')];
     }
 
     // 修改
@@ -23,7 +23,7 @@ class LoverDiary extends Model
         if (!$result) {
             return ['code' => 2, 'msg' => '修改失败'];
         }
-        return ['code' => 1, 'msg' => '修改成功', 'link' => url('index')];
+        return ['code' => 1, 'msg' => '修改成功', 'link' => url('diary')];
     }
 
     // 删除
