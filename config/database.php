@@ -17,9 +17,9 @@ return [
     // 数据库名
     'database'        => 'lover',
     // 用户名
-    'username'        => 'root',
+    'username'        => 'lover',
     // 密码
-    'password'        => '',
+    'password'        => 'xincong',
     // 端口
     'hostport'        => '3306',
     // 连接dsn
