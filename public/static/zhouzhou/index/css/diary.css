@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    font-size: 12px;
+    overflow: hidden;
+}
+.layui-body {
+    width: 100%;
+    height: 100%;
+    background-color: #0C0C0C;
+}
+.layui-timeline-title {
+    color: darkred !important;
+    font-size: 24px !important;
+}
+
+.diary_content {
+    color: lightcoral;
+    width: 80%;
+    font-size: 16px ;
+}
+.layadmin-homepage-pad-img {
+    max-width: 500px;
+}

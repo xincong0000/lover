@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sleeping Elf</title>
+    <meta name="keywords" content="粥粥"/>
+    <meta name="description" content="粥粥"/>
+    <script src="/framework/layui/layui.js" type="text/javascript"></script>
+    <link href="/static/zhouzhou/index/css/diary.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="/framework/layui/css/layui.css">
+    <script type="text/javascript" src="/static/zhouzhou/index/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/zhouzhou/index/js/jq.snow.js"></script>
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <!-- 内容主体区域 -->
+    <div class="layui-body" id="mainDiv">
+        <ul class="layui-timeline">
+            {foreach $list as $value}
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                    <h3 class="layui-timeline-title">{$value.date}</h3>
+                    <p class="diary_content">
+                        <img class="layadmin-homepage-pad-img" src="{$value.link}">
+                        <br>
+                        {$value.content}
+                    </p>
+                </div>
+            </li>
+            {/foreach}
+            <li class="layui-timeline-item">
+                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                <div class="layui-timeline-content layui-text">
+                    <div class="layui-timeline-title">现在我的生活很简单，只有你却没有你</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+</body>
+<script>
+    $.fn.snow({
+        minSize: 5,		//雪花的最小尺寸
+        maxSize: 50, 	//雪花的最大尺寸
+        newOn: 1000		//雪花出现的频率 这个数值越小雪花越多
+    });
+</script>
+</html>

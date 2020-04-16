@@ -46,11 +46,11 @@
                             </div>
                         </div>
                         <div class="layui-card">
-                            <div class="layui-card-header">排序</div>
+                            <div class="layui-card-header">时间</div>
                             <div class="layui-card-body layui-row layui-col-space10">
                                 <div class="layui-col-md6">
-                                    <input type="text" name="sort" placeholder="排序越小越靠前" autocomplete="off"
-                                           class="layui-input" value="{$detail.sort}">
+                                    <input type="text" name="date" id="date" placeholder="越早越靠前" autocomplete="off"
+                                           class="layui-input" value="{$detail.date}">
                                 </div>
                             </div>
                         </div>
@@ -72,8 +72,12 @@
 
 <script>
     $(function () {
-        layui.use(['layer', 'upload', 'element', 'form'], function () {
+        layui.use(['layer', 'laydate','upload', 'element', 'form'], function () {
             var upload = layui.upload;
+            var laydate = layui.laydate;
+            laydate.render({
+                elem: '#date'
+            });
             //执行实例
             var uploadInst = upload.render({
                 elem: '#diary_upload',  //绑定元素

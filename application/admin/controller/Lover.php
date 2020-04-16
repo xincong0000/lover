@@ -80,8 +80,8 @@ class Lover extends Admin
         ];
         $list = model('LoverDiary')->alias('d')
             ->leftJoin('image i','d.image_id = i.id')
-            ->field(['d.id','d.content','d.sort','i.url_link as link'])
-            ->order(['d.id', 'd.sort'])->paginate(10, false, $pageConfig);
+            ->field(['d.id','d.content','d.date','i.url_link as link'])
+            ->order([ 'd.date','d.id'])->paginate(10, false, $pageConfig);
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -110,7 +110,7 @@ class Lover extends Admin
 
         $detail = model('LoverDiary')->alias('d')->where(['d.id' => $id])
             ->leftJoin('image i','d.image_id = i.id')
-            ->field(['d.id','d.content','d.sort','i.url_link as link','d.image_id'])
+            ->field(['d.id','d.content','d.date','i.url_link as link','d.image_id'])
             ->find();
         $this->assign('detail', $detail);
         return $this->fetch();
