@@ -17,7 +17,7 @@ class Diary extends Controller
 
     public function index()
     {
-        $list = model('Admin/LoverDiary')->alias('d')
+        $list = model('LoverDiary')->alias('d')
             ->leftJoin('image i','d.image_id = i.id')
             ->field(['d.id','d.content','d.date','i.url_link as link'])
             ->order('d.date','d.id')->select();
