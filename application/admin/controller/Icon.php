@@ -10,7 +10,7 @@ class Icon extends Admin
     //列表页面
     public function index(Request $request)
     {
-        $where = $request->get();;//暂定查询时使用的条件
+        $where = $request->get();;// 暂定查询时使用的条件
         $list = model('Icon')->getList($where);
         $this->assign('list', $list);
         return $this->fetch();
