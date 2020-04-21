@@ -9,9 +9,11 @@ class Index extends Controller
     //home 模块首页
     public function index()
     {
-        $a = [1,2,3];
-//        $b =var_export($a,true);
-        $b = json_encode($a);
-        dump($b);
+        $a = session('arr',['a'=>1,'b'=>52,'c'=>'125sd']);
+        dump(session('arr'));
+        session('arr.a','success');
+        dump(session('arr'));
+        session('arr',null);
+
     }
 }

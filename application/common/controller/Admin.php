@@ -119,7 +119,7 @@ class Admin extends Controller
 
 
     /**
-     * 上传图片[未测试]
+     * 上传图片
      * @param Request $request
      * @return Json
      */

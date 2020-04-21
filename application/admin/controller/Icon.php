@@ -8,17 +8,10 @@ use think\Request;
 class Icon extends Admin
 {
     //列表页面
-    public function index()
+    public function index(Request $request)
     {
-        $pageConfig = [
-            'type' => 'Adminpage', //分页类名
-            'var_page' => 'page',
-            // 'query' => ['keyword' => $keyword], // url额外参数
-        ];
-        $list = model('Icon')->paginate(10, false, $pageConfig);
-        foreach ($list as $key => $value) {
-            $list[$key]['type_name'] = $value['type'] == 1 ? '内置图标' : '普通图标';
-        }
+        $where = $request->get();;//暂定查询时使用的条件
+        $list = model('Icon')->getList($where);
         $this->assign('list', $list);
         return $this->fetch();
     }
