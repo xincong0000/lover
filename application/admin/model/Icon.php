@@ -2,32 +2,34 @@
 
 namespace app\admin\model;
 
+use think\exception\DbException;
 use think\Model;
+use think\Paginator;
 
 class Icon extends Model
 {
     /**
      * 获取数据列表
      * @param array $where
-     * @return array $list
+     * @return Paginator
+     * @throws DbException
      */
     public function getList($where)
     {
         $condition = [];
         if (!empty($where)) {
             if (!empty($where['type'])) {
-                $condition[] = ['type','=',intval($where['type'])];
+                $condition[] = ['type', '=', intval($where['type'])];
             }
             if (!empty($where['name'])) {
-                $condition[] =['name','like', '%' . $where['name'] . '%'];
+                $condition[] = ['name', 'like', '%' . $where['name'] . '%'];
             }
         }
         $pageConfig = [
             'type' => 'Adminpage', //分页类名
             'var_page' => 'page',
         ];
-        $list = model('Icon')->where($condition)->order('id desc')->paginate(15, false, $pageConfig);
-        return $list;
+        return $this->where($condition)->order('id desc')->paginate(15, false, $pageConfig);
     }
 
     /**

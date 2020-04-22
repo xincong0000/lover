@@ -22,7 +22,7 @@ class Icon extends Admin
         return $this->fetch();
     }
 
-    //新增保存界面
+    //新增保存
     public function additions(Request $request)
     {
         $data = $request->post();

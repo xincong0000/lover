@@ -2,14 +2,16 @@
 
 namespace app\admin\model;
 
+use think\exception\DbException;
 use think\Model;
+use think\Paginator;
 
 class Admin extends Model
 {
     //管理员角色类型1
     protected static $TYPE = [
-        1 => '系统管理员',
-        2 => '管理员',
+        1 => '超级管理员',
+        2 => '系统管理员',
         3 => '监察人员',
         4 => '公关人员',
         5 => '商务人员',
@@ -45,6 +47,33 @@ class Admin extends Model
             return ['code' => 2, 'msg' => '服务器运行出错'];
         }
         return ['code' => 1, 'msg' => '登录成功'];
+    }
+
+    /**
+     * 获取管理员
+     * @param $where
+     * @return Paginator
+     * @throws DbException
+     */
+    public function getList($where)
+    {
+        $condition = [];
+        if (!empty($where)) {
+            if (!empty($where['type'])) {
+                $condition[] = ['type','=',intval($where['type'])];
+            }
+            if (!empty($where['name'])) {
+                $condition[] =['name','like', '%' . $where['name'] . '%'];
+            }
+            if (!empty($where['account'])) {
+                $condition[] =['account','like', '%' . $where['account'] . '%'];
+            }
+        }
+        $pageConfig = [
+            'type' => 'Adminpage', //分页类名
+            'var_page' => 'page',
+        ];
+        return $this->where($condition)->paginate(10, false, $pageConfig);
     }
 
     public function additions($data)

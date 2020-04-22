@@ -3,4 +3,24 @@
 }
 .layui-layout-admin .layui-body {
     margin: 0 2%;
+    margin-top: -30px !important;
+    height: 85%
+}
+
+::-webkit-scrollbar {
+    display: none
+}
+
+.layui-fluid {
+    margin: 15px 0px -35px 0px !important;
+}
+
+.query {
+    display: none;
+}
+
+.show_icon {
+    color: #1E9FFF;
+    height: 15px;
+    width: 15px;
 }
