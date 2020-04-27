@@ -12,6 +12,7 @@ use think\Request;
  */
 class Lover extends Admin
 {
+    //设置一级菜单id
     protected $TOP_MENU = 2;
 
     public function index()

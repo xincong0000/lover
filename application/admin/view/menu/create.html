@@ -1,1 +1,76 @@
-1
+<!DOCTYPE html>
+<html>
+
+<head>
+    {include file="common/resources" /}
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    {include file="common/header" /}
+    {include file="common/menu" /}
+    <!-- 内容主体区域 -->
+    <div class="layui-body">
+        <span class="layui-breadcrumb">
+          <a href="javascript:;">控制台</a>
+          <a href="javascript:;">菜单管理</a>
+          <a><cite>添加菜单</cite></a>
+        </span>
+        <div class="layui-fluid">
+            <form action="{:url('additions')}" method="post">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-fluid">
+                        <div class="layui-card">
+                            <div class="layui-card-header">菜单名称</div>
+                            <div class="layui-card-body layui-row layui-col-space10">
+                                <div class="layui-col-md6">
+                                    <input type="text" name="name" placeholder="图标名称" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-card">
+                            <div class="layui-card-header">菜单地址</div>
+                            <div class="layui-card-body layui-row layui-col-space10">
+                                <div class="layui-col-md6">
+                                    <input type="text" name="link" placeholder="菜单链接地址--相对地址" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-card layui-form" lay-filter="component-form-element">
+                            <div class="layui-card-body layui-row layui-col-space10">
+                                <div class="layui-col-md6">
+                                    <input type="submit" value="提交" class="layui-btn">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {include file="common/footer" /}
+    </div>
+</div>
+</body>
+
+<script>
+    $(function () {
+        document.cookie = "name=粥粥";
+        var x = document.cookie.split(';')
+        console.log(x);
+        var name = getCookie('name');
+        console.log(name)
+        function getCookie(name) {
+            let reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            let arr = document.cookie.match(reg)
+            if (arr) {
+                return unescape(arr[2]);
+            } else {
+                return null;
+            }
+        }
+    })
+    layui.use(['layer', 'element', 'form'], function () {
+    });
+</script>
+</html>
