@@ -7,6 +7,25 @@ use think\Model;
 
 class Menu extends Model
 {
+    //列表
+    public function getList($where)
+    {
+        $condition = [];
+        if (!empty($where)) {
+            if (!empty($where['type'])) {
+                $condition[] = ['type', '=', intval($where['type'])];
+            }
+            if (!empty($where['name'])) {
+                $condition[] = ['name', 'like', '%' . $where['name'] . '%'];
+            }
+        }
+        $pageConfig = [
+            'type' => 'Adminpage', //分页类名
+            'var_page' => 'page',
+        ];
+        return $this->where($condition)->order('id')->paginate(10, false, $pageConfig);
+    }
+
     public function additions($data)
     {
         $result = $this->insert($data);

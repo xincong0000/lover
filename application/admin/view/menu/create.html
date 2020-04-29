@@ -37,6 +37,30 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="layui-card">
+                            <div class="layui-card-header">菜单图标</div>
+                            <div class="layui-card-body layui-row layui-col-space10">
+                                <div class="layui-col-md6">
+                                    <input type="text" name="icon" placeholder="菜单图标" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-card">
+                            <div class="layui-card-header">菜单级别</div>
+                            <div class="layui-card-body layui-row layui-col-space10">
+                                <div class="layui-col-md6">
+                                    <input type="text" name="level" placeholder="菜单级别" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-card">
+                            <div class="layui-card-header">父级ID</div>
+                            <div class="layui-card-body layui-row layui-col-space10">
+                                <div class="layui-col-md6">
+                                    <input type="text" name="pid" placeholder="父级ID" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                        </div>
                         <div class="layui-card layui-form" lay-filter="component-form-element">
                             <div class="layui-card-body layui-row layui-col-space10">
                                 <div class="layui-col-md6">
@@ -54,22 +78,6 @@
 </body>
 
 <script>
-    $(function () {
-        document.cookie = "name=粥粥";
-        var x = document.cookie.split(';')
-        console.log(x);
-        var name = getCookie('name');
-        console.log(name)
-        function getCookie(name) {
-            let reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-            let arr = document.cookie.match(reg)
-            if (arr) {
-                return unescape(arr[2]);
-            } else {
-                return null;
-            }
-        }
-    })
     layui.use(['layer', 'element', 'form'], function () {
     });
 </script>

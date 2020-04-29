@@ -8,17 +8,15 @@ use think\Request;
 /**
  * Class Menu
  * @package app\admin\controller
- * 菜单管理 [一级菜单作为模块，属于管理员管理的内容区域，不建立三级菜单，有三级菜单所需的在页面内部建立选项卡]
+ * 菜单管理 
  */
 class Menu extends Admin
 {
     public function index(Request $request)
     {
-        $menu_id = $request->get('menu_id', 1, 'intval');
         $model = model('Menu');
-        // 获取二级菜单列表
-        $list = $model->where(['level' => 2, 'pid' => $menu_id])->select();
-        $this->assign('menu_id', $menu_id);
+        $where = [];
+        $list = $model->getList($where);
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -26,5 +24,37 @@ class Menu extends Admin
     public function create()
     {
         return $this->fetch();
+    }
+    //新增保存
+    public function additions(Request $request)
+    {
+        $data = $request->post();
+        return model('Menu')->additions($data);
+    }
+
+    //修改界面
+    public function update(Request $request)
+    {
+        $id = $request->param('id', 0, 'intval');
+        if ($id == 0) {
+            $this->error('菜单数据不存在');
+        }
+        $detail = model('Menu')->where(['id' => $id])->find();
+        $this->assign('detail', $detail);
+        return $this->fetch();
+    }
+
+    // 修改保存
+    public function edit(Request $request)
+    {
+        $data = $request->post();
+        return model('Menu')->edit($data);
+    }
+
+    // 删除
+    public function del(Request $request)
+    {
+        $id = $request->post('id', 0, 'intval');
+        return model('Menu')->del($id);
     }
 }
