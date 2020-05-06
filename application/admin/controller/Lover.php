@@ -107,8 +107,7 @@ class Lover extends Admin
         if ($id == 0) {
             $this->error('图标数据不存在');
         }
-//        $detail = model('Icon')->where(['id' => $id])->find();
-
+        // $detail = model('Icon')->where(['id' => $id])->find();
         $detail = model('LoverDiary')->alias('d')->where(['d.id' => $id])
             ->leftJoin('image i','d.image_id = i.id')
             ->field(['d.id','d.content','d.date','i.url_link as link','d.image_id'])
