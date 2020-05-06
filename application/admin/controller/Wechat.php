@@ -12,7 +12,7 @@ class Wechat extends Admin
     // 暂时将调用参数写死
     const APPID = 'wx6de2329718c58d57'; 
     const APPSECRET = 'f30459e34819c562181999ee88facb95';
-    const TOKEN = 'SleepingElf';
+    const TOKEN = 'weixin';
 
     /**
      * 开发者通过检验signature对请求进行校验。
