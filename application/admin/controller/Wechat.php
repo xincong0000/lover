@@ -1,7 +1,9 @@
 <?php
+
 namespace app\admin\controller;
 
 use app\common\controller\Admin;
+use think\Request;
 
 /**
  * 微信公众号
@@ -10,12 +12,14 @@ use app\common\controller\Admin;
 class Wechat extends Admin
 {
     // 暂时将调用参数写死
-    const APPID = 'wx6de2329718c58d57'; 
+    const APPID = 'wx6de2329718c58d57';
     const APPSECRET = 'f30459e34819c562181999ee88facb95';
     const TOKEN = 'weixin';
-    public function index(){
-        echo self::APPID.'<hr>';
-        echo self::APPSECRET.'<hr>';
+    
+    public function index()
+    {
+        echo self::APPID . '<hr>';
+        echo self::APPSECRET . '<hr>';
         echo self::TOKEN;
     }
 
@@ -23,19 +27,26 @@ class Wechat extends Admin
      * 开发者通过检验signature对请求进行校验。
      * 若确认此次GET请求来自微信服务器，请原样返回echostr参数内容，则接入生效，成为开发者成功，否则接入失败。
      */
-    public function access()
+    public function access(Request $request)
     {
-        $echoStr = $_GET["echostr"];
-        if ($this->checkSignature()) { //检查签名是否一致
-            return $echoStr; //验证成功后，输出
+        $echoStr = $request->param('echostr','');
+        $signature = $request->param('signature', '');
+        $timestamp = $request->param('timestamp', '');
+        $nonce = $request->param('nonce', '');
+        // $echoStr = $_GET["echostr"];
+        if ($this->checkSignature($signature, $timestamp, $nonce)) { //检查签名是否一致
+            echo $echoStr; //验证成功后，输出
             exit;
         }
     }
-    private function checkSignature()
+    private function checkSignature($signature, $timestamp, $nonce)
     {
-        $signature = $_GET["signature"];
-        $timestamp = $_GET["timestamp"];
-        $nonce = $_GET["nonce"];
+        // $signature = $request->param('signature', '');
+        // $timestamp = $request->param('timestamp', '');
+        // $nonce = $request->param('nonce', '');
+        // $signature = $_GET["signature"];
+        // $timestamp = $_GET["timestamp"];
+        // $nonce = $_GET["nonce"];
 
         $token = self::TOKEN;
         $tmpArr = array($token, $timestamp, $nonce);
