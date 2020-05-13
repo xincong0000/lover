@@ -15,7 +15,7 @@ class Wechat extends Admin
     const APPID = 'wx6de2329718c58d57';
     const APPSECRET = 'f30459e34819c562181999ee88facb95';
     const TOKEN = 'weixin';
-    
+
     public function index()
     {
         echo self::APPID . '<hr>';
@@ -41,19 +41,11 @@ class Wechat extends Admin
     }
     private function checkSignature($signature, $timestamp, $nonce)
     {
-        // $signature = $request->param('signature', '');
-        // $timestamp = $request->param('timestamp', '');
-        // $nonce = $request->param('nonce', '');
-        // $signature = $_GET["signature"];
-        // $timestamp = $_GET["timestamp"];
-        // $nonce = $_GET["nonce"];
-
         $token = self::TOKEN;
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode($tmpArr);
         $tmpStr = sha1($tmpStr);
-
         if ($tmpStr == $signature) {
             return true;
         } else {

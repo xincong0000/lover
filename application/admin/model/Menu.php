@@ -18,12 +18,33 @@ class Menu extends Model
             if (!empty($where['name'])) {
                 $condition[] = ['name', 'like', '%' . $where['name'] . '%'];
             }
+        } else {
+            $condition[] = ['level', '=', 1];
         }
-        $pageConfig = [
-            'type' => 'Adminpage', //分页类名
-            'var_page' => 'page',
-        ];
-        return $this->where($condition)->order('id')->paginate(10, false, $pageConfig);
+        $list = $this->where($condition)->select();
+        $list = $this->objectToArray($list);
+        $step = 1;
+        while (count($list) > $step) {
+            $data = $this->where('pid', $list[$step-1]['id'])->select();
+            $count = count($data);
+            if ($count == 0) {
+                echo $step .'-'.$list[$step - 1]['id'].'<hr>';
+                $step++;
+                continue;
+            }
+            $data = $this->objectToArray($data);
+            array_splice($list,$step,0,$data);
+            $step = $step + $count;
+        }
+//        foreach ($list as $key=>$value) {
+//            $data = $this->where('pid', $value['id'])->select();
+//            if (count($data) == 0) {
+//                continue;
+//            }
+//            $data = $this->objectToArray($data);
+//            array_splice($list,$key+1,0,$data);
+//        }
+        return $list;
     }
 
     public function additions($data)
@@ -119,5 +140,13 @@ class Menu extends Model
             return false;
         }
         return null;
+    }
+
+    //将对象转化为数组
+    public function objectToArray($list)
+    {
+        $data = json_encode($list, JSON_UNESCAPED_UNICODE);
+        $data = json_decode($data, true);
+        return $data;
     }
 }

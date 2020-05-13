@@ -6,116 +6,116 @@
 </head>
 
 <body class="layui-layout-body">
-    <div class="layui-layout layui-layout-admin">
-        {include file="common/header" /}
-        {include file="common/menu" /}
-        <!-- 内容主体区域 -->
-        <div class="layui-body">
+<div class="layui-layout layui-layout-admin">
+    {include file="common/header" /}
+    {include file="common/menu" /}
+    <!-- 内容主体区域 -->
+    <div class="layui-body">
             <span class="layui-breadcrumb">
                 <a href="javascript:;">控制台</a>
                 <a href="javascript:;">菜单管理</a>
                 <a><cite>菜单列表</cite></a>
             </span>
-            <span class="layui-layout-right">
+        <span class="layui-layout-right">
                 <a class="layui-btn" href="JavaScript:;" id="query">
                     <i class="layui-icon layui-icon-search"></i>查询
                 </a>
                 <a class="layui-btn" href="{:url('create')}"><i class="layui-icon"></i>添加</a>
             </span>
-            <div class="layui-fluid query">
-                <div class="layui-card">
-                    <form action="{:url('index')}" method="get">
-                        <div class="layui-form layui-card-header layuiadmin-card-header-auto"
-                            lay-filter="layadmin-userfront-formlist">
-                            <div class="layui-form-item">
-                                <div class="layui-inline">
-                                    <label class="layui-form-label">图标名称</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="name" placeholder="请输入" autocomplete="off"
-                                            class="layui-input">
-                                    </div>
+        <div class="layui-fluid query">
+            <div class="layui-card">
+                <form action="{:url('index')}" method="get">
+                    <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                         lay-filter="layadmin-userfront-formlist">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">图标名称</label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="name" placeholder="请输入" autocomplete="off"
+                                           class="layui-input">
                                 </div>
-                                <div class="layui-inline">
-                                    <label class="layui-form-label">类型</label>
-                                    <div class="layui-input-block">
-                                        <select name="type" lay-verify="required" lay-search="">
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">类型</label>
+                                <div class="layui-input-block">
+                                    <select name="type" lay-verify="required" lay-search="">
+                                        <option value="">不限</option>
+                                        <option value="1">内置图标</option>
+                                        <option value="2">普通图标</option>
+                                    </select>
+                                    <div class="layui-form-select">
+                                        <div class="layui-select-title">
+                                            <input type="text" placeholder="带搜索的选择框" class="layui-input">
+                                            <i class="layui-edge"></i>
+                                        </div>
+                                        <dl class="layui-anim layui-anim-upbit">
                                             <option value="">不限</option>
                                             <option value="1">内置图标</option>
                                             <option value="2">普通图标</option>
-                                        </select>
-                                        <div class="layui-form-select">
-                                            <div class="layui-select-title">
-                                                <input type="text" placeholder="带搜索的选择框" class="layui-input">
-                                                <i class="layui-edge"></i>
-                                            </div>
-                                            <dl class="layui-anim layui-anim-upbit">
-                                                <option value="">不限</option>
-                                                <option value="1">内置图标</option>
-                                                <option value="2">普通图标</option>
-                                            </dl>
-                                        </div>
+                                        </dl>
                                     </div>
                                 </div>
-                                <div class="layui-inline">
-                                    <button class="layui-btn layuiadmin-btn-useradmin">
-                                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
-                                    </button>
-                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button class="layui-btn layuiadmin-btn-useradmin">
+                                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                </button>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-            <table class="layui-table mt">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>菜单名称</th>
-                        <th>菜单级别</th>
-                        <th>父级ID</th>
-                        <th>图标</th>
-                        <th>地址</th>
-                        <th>更新时间</th>
-                        <th>添加时间</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {foreach $list as $value}
-                    <tr>
-                        <td>{$value.id}</td>
-                        <td>{$value.name}</td>
-                        <td>{$value.level}</td>
-                        <td>{$value.pid}</td>
-                        <td>
-                            <i class="layui-icon {$value.icon} show_icon"></i>
-                        </td>
-                        <td>{$value.link}</td>
-                        <td>{$value.update_time}</td>
-                        <td>{$value.create_time}</td>
-                        <td>
-                            <div class="layui-table-cell laytable-cell-3-0-9">
-                                <a class="layui-btn layui-btn-normal layui-btn-xs"
-                                    href="{:url('update',array('id'=>$value.id))}">
-                                    <i class="layui-icon layui-icon-edit"></i>编辑
-                                </a>
-                                <a class="layui-btn layui-btn-danger layui-btn-xs tab_del" data-id="{$value.id}">
-                                    <i class="layui-icon layui-icon-delete"></i>删除
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                    {/foreach}
-                </tbody>
-            </table>
-            {$list|raw}
-            {include file="common/footer" /}
         </div>
+        <table class="layui-table mt">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>菜单名称</th>
+                <th>菜单级别</th>
+                <th>父级ID</th>
+                <th>图标</th>
+                <th>地址</th>
+                <th>更新时间</th>
+                <th>添加时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $list as $value}
+            <tr>
+                <td>{$value.id}</td>
+                <td class="menu_name" data-level="{$value.level}">{$value.name}</td>
+                <td>{$value.level}</td>
+                <td>{$value.pid}</td>
+                <td>
+                    <i class="layui-icon {$value.icon} show_icon"></i>
+                </td>
+                <td>{$value.link}</td>
+                <td>{$value.update_time}</td>
+                <td>{$value.create_time}</td>
+                <td>
+                    <div class="layui-table-cell laytable-cell-3-0-9">
+                        <a class="layui-btn layui-btn-normal layui-btn-xs"
+                           href="{:url('update',array('id'=>$value.id))}">
+                            <i class="layui-icon layui-icon-edit"></i>编辑
+                        </a>
+                        <a class="layui-btn layui-btn-danger layui-btn-xs tab_del" data-id="{$value.id}">
+                            <i class="layui-icon layui-icon-delete"></i>删除
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+        {include file="common/footer" /}
     </div>
+</div>
 </body>
 <script>
     layui.use(['layer', 'element', 'form'], function () {
         $(function () {
+            updateView();
             $("#query").click(function () {
                 $(".query").toggle()
             })
@@ -136,7 +136,7 @@
             function del(id) {
                 $.ajax({
                     url: 'del',
-                    data: { id: id },
+                    data: {id: id},
                     method: 'post',
                     dataType: 'json',
                     success: function (res) {
@@ -146,6 +146,18 @@
                         }, 2000);
                     }
                 })
+            }
+
+            //更新样式
+            function updateView() {
+                $(".menu_name").each(function() {
+                    let level = $(this).data('level')
+                    let text =' ' + $(this).html()
+                    for(i=1;i<level;i++){
+                        text = '—'+text;
+                    }
+                    $(this).html(text)
+                });
             }
         })
     });
