@@ -5,13 +5,19 @@ namespace app\admin\controller;
 use app\common\controller\Admin;
 use think\Request;
 
+/**
+ * Class Lover
+ * @package app\admin\controller
+ */
 class Bgy extends Admin
 {
-    //列表页面
-    public function index(Request $request)
+    //设置一级菜单id
+    protected $TOP_MENU = 2;
+
+    //首页 ---start
+    public function index()
     {
-        $where = $request->get();;// 暂定查询时使用的条件
-        $list = model('Icon')->getList($where);
+        $list = model('Bgy')->select();
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -22,11 +28,11 @@ class Bgy extends Admin
         return $this->fetch();
     }
 
-    //新增保存
+    //新增保存界面
     public function additions(Request $request)
     {
         $data = $request->post();
-        return model('Icon')->additions($data);
+        return model('Bgy')->additions($data);
     }
 
     //修改界面
@@ -34,9 +40,9 @@ class Bgy extends Admin
     {
         $id = $request->param('id', 0, 'intval');
         if ($id == 0) {
-            $this->error('图标数据不存在');
+            $this->error('数据不存在');
         }
-        $detail = model('Icon')->where(['id' => $id])->find();
+        $detail = model('Bgy')->where(['id' => $id])->find();
         $this->assign('detail', $detail);
         return $this->fetch();
     }
@@ -45,13 +51,14 @@ class Bgy extends Admin
     public function edit(Request $request)
     {
         $data = $request->post();
-        return model('Icon')->edit($data);
+        return model('Bgy')->edit($data);
     }
 
     // 删除
     public function del(Request $request)
     {
         $id = $request->post('id', 0, 'intval');
-        return model('Icon')->del($id);
+        return model('Bgy')->del($id);
     }
+
 }
