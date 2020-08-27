@@ -8,7 +8,6 @@ use think\Request;
 /**
  * Class Lover
  * @package app\admin\controller
- * 粥粥
  */
 class Lover extends Admin
 {
