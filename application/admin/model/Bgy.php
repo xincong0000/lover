@@ -8,6 +8,10 @@ class Bgy extends Model
 {
     public function additions($data)
     {
+        $res = $this->where(['mobile' => $data['mobile']])->find();
+        if ($res) {
+            return ['code' => 2, 'msg' => '电话号码重复'];
+        }
         $result = $this->insert($data);
         if ($result === false) {
             return ['code' => 2, 'msg' => '新增失败'];

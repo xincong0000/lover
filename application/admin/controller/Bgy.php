@@ -17,7 +17,7 @@ class Bgy extends Admin
     //首页 ---start
     public function index()
     {
-        $list = model('Bgy')->select();
+        $list = model('Bgy')->order("id desc")->select();
         $this->assign('list', $list);
         return $this->fetch();
     }
